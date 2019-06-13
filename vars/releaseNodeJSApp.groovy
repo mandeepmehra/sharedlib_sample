@@ -5,22 +5,22 @@ def call(Map config  ){
          buildDiscarder(logRotator(numToKeepStr: '10'))
     }
     environment {
-        QA_PORT = '30101'
-        PROD_PORT = '30100'
-        APP_NAME= "${config.appName}"
-        SRC_DIR='api-express'
-        HELM_CHART='xebia-be'
-        HELM_CHART_VER = "${env.BUILD_NUMBER}"
-        DTR_URL = 'mandeepmehra'
-	      DTR_CREDS = 'dockerhub'
-        DTR_NAMESPACE = 'ge-poc'
-        IMAGE_NAME = 'ge-api-poc'
-        BUILD_NUMBER = "${env.BUILD_NUMBER}"
-        IMAGE_TAG = "${DTR_URL}/${IMAGE_NAME}:${BUILD_NUMBER}"
-	      DOCKER_IMAGE = ''
-        SKIP_INTEGRATION_TEST='true'
-        ARTIFACTORY_USER = ''
-        ARTIFACTORY_PASS = ''
+        QA_PORT               = "${config.port_QA}"
+        PROD_PORT             = "${config.port_Prod}"
+        APP_NAME              = "${config.appName}"
+        SRC_DIR               = "${config.srcBaseDir}"
+        HELM_CHART            ="${config.helmChartName}"
+        HELM_CHART_VER        = "${env.BUILD_NUMBER}"
+        DTR_URL               = "${config.dockerRepoName}"
+	      DTR_CREDS             = 'dockerhub'
+        DTR_NAMESPACE         = 'ge-poc'
+        IMAGE_NAME            = "${config.dockerImageName}"
+        BUILD_NUMBER          = "${env.BUILD_NUMBER}"
+        IMAGE_TAG             = "${DTR_URL}/${IMAGE_NAME}:${BUILD_NUMBER}"
+	      DOCKER_IMAGE          = ''
+        SKIP_INTEGRATION_TEST = "${config.skipIntegrationTest}"
+        ARTIFACTORY_USER      = ''
+        ARTIFACTORY_PASS      = ''
     }
     stages{
         stage ('Print Metadata'){
