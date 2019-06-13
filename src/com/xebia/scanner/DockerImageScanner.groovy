@@ -7,7 +7,7 @@ class DockerImageScanner implements  Serializable{
     private String imageNameWithTag
     private String scannerClientIP
     private String scannerHost
-    private int scannerPort
+    private String scannerPort
 
     DockerImageScanner(String imageNameWithTag, String scannerClientIP, String scannerHost, String scannerPort) {
         this.imageNameWithTag = imageNameWithTag
