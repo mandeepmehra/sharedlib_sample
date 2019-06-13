@@ -91,7 +91,7 @@ def call(Map config  ){
 
         stage ('Scan Image'){
            steps{
-            scanImage "${IMAGE_TAG}"
+            scanImageUT "${IMAGE_TAG}", "${SCANNER_CLIENT_IP}", "${SCANNER_HOST}", "${SCANNER_PORT}"
            }
         }
 
