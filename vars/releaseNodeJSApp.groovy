@@ -7,7 +7,7 @@ def call(Map config  ){
     environment {
         QA_PORT = '30101'
         PROD_PORT = '30100'
-        APP_NAME= config.appName
+        APP_NAME= "${config.appName}"
         SRC_DIR='api-express'
         HELM_CHART='xebia-be'
         HELM_CHART_VER = "${env.BUILD_NUMBER}"
